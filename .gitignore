@@ -1,0 +1,38 @@
+# dependencies
+/backend/node_modules
+/frontend/node_modules
+
+#dist
+/backend/dist
+/backend/logs
+
+# /frontend/public
+/frontend/build
+
+# IDE
+/.idea
+/.awcache
+/.vscode
+
+# misc
+*.log
+
+# example
+/quick-start
+
+# tests
+/coverage
+/.nyc_output
+
+# dist
+/dist
+
+# logs
+/logs
+*.log
+
+#env
+*.env
+
+/node_modules
+ormconfig.js
