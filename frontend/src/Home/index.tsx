@@ -72,14 +72,14 @@ export default function Home() {
                 Join the hundreds of research teams already transforming their drug discovery
                 pipeline with our technology.
               </p>
-              <div className="flex flex-wrap gap-4">
+              {/* <div className="flex flex-wrap gap-4">
                 <button className="px-8 py-4 rounded-full bg-purple-600 text-white hover:bg-purple-700 transition-all duration-300 font-medium shadow-lg hover:shadow-purple-200 dark:hover:shadow-purple-900/30 transform hover:-translate-y-1 hover:scale-105">
                   Get Started
                 </button>
                 <button className="px-8 py-4 rounded-full bg-white dark:bg-gray-800 text-purple-600 dark:text-purple-400 border border-purple-200 dark:border-purple-800 hover:bg-purple-50 dark:hover:bg-gray-700 transition-all duration-300 font-medium transform hover:-translate-y-1 hover:scale-105">
                   Learn More
                 </button>
-              </div>
+              </div> */}
             </div>
 
             {/* Right Column - Image */}
@@ -96,50 +96,9 @@ export default function Home() {
           </div>
         </div>
 
-        {/* Features */}
-        <div className="text-center mb-12 transform transition-all duration-700">
-          <h2 className="text-3xl font-bold mb-4 bg-clip-text text-transparent bg-gradient-to-r from-blue-600 to-violet-600 dark:from-blue-400 dark:to-violet-400 inline-block">
-            Our Advanced Features
-          </h2>
-          <p className="text-gray-600 dark:text-gray-300 max-w-2xl mx-auto">
-            Cutting-edge technology to accelerate your drug discovery process
-          </p>
-        </div>
+       
 
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-          {[
-            {
-              icon: <Sparkles className="w-8 h-8 text-blue-600 dark:text-blue-400 group-hover:text-white transition-colors duration-300" />,
-              title: "AI-Powered Analysis",
-              description: "Advanced algorithms for precise molecular predictions and analysis",
-              color: "blue"
-            },
-            {
-              icon: <Brain className="w-8 h-8 text-purple-600 dark:text-purple-400 group-hover:text-white transition-colors duration-300" />,
-              title: "Deep Learning",
-              description: "Neural networks trained on vast chemical databases for optimal results",
-              color: "purple"
-            },
-            {
-              icon: <Beaker className="w-8 h-8 text-pink-600 dark:text-pink-400 group-hover:text-white transition-colors duration-300" />,
-              title: "Rapid Prototyping",
-              description: "Quick iteration and validation of drug candidates with real-time feedback",
-              color: "pink"
-            }
-          ].map((feature, index) => (
-            <div 
-              key={index}
-              className={`group p-8 rounded-2xl bg-white/70 dark:bg-gray-800/50 backdrop-blur-sm border border-${feature.color}-100 dark:border-${feature.color}-900/30 hover:shadow-lg transition-all duration-500 hover:-translate-y-2 flex flex-col items-center text-center transform`}
-              style={{ transitionDelay: `${index * 100}ms` }}
-            >
-              <div className={`w-16 h-16 rounded-2xl bg-${feature.color}-100 dark:bg-${feature.color}-900/30 flex items-center justify-center mb-6 group-hover:bg-${feature.color}-600 dark:group-hover:bg-${feature.color}-500 transition-colors duration-300`}>
-                {feature.icon}
-              </div>
-              <h3 className="text-xl font-semibold text-gray-900 dark:text-white mb-3">{feature.title}</h3>
-              <p className="text-gray-600 dark:text-gray-300">{feature.description}</p>
-            </div>
-          ))}
-        </div>
+        
 
         {/* Drug Modalities */}
         <div>
@@ -194,6 +153,51 @@ export default function Home() {
               </button>
             ))}
           </div>
+        </div>
+
+
+         {/* Features */}
+         <div className="text-center mb-12 transform transition-all duration-700">
+          <h2 className="text-3xl font-bold mb-4 bg-clip-text text-transparent bg-gradient-to-r from-blue-600 to-violet-600 dark:from-blue-400 dark:to-violet-400 inline-block">
+            Our Advanced Features
+          </h2>
+          <p className="text-gray-600 dark:text-gray-300 max-w-2xl mx-auto">
+            Cutting-edge technology to accelerate your drug discovery process
+          </p>
+        </div>
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+          {[
+            {
+              icon: <Sparkles className="w-8 h-8 text-blue-600 dark:text-blue-400 group-hover:text-white transition-colors duration-300" />,
+              title: "AI-Powered Analysis",
+              description: "Advanced algorithms for precise molecular predictions and analysis",
+              color: "blue"
+            },
+            {
+              icon: <Brain className="w-8 h-8 text-purple-600 dark:text-purple-400 group-hover:text-white transition-colors duration-300" />,
+              title: "Deep Learning",
+              description: "Neural networks trained on vast chemical databases for optimal results",
+              color: "purple"
+            },
+            {
+              icon: <Beaker className="w-8 h-8 text-pink-600 dark:text-pink-400 group-hover:text-white transition-colors duration-300" />,
+              title: "Rapid Prototyping",
+              description: "Quick iteration and validation of drug candidates with real-time feedback",
+              color: "pink"
+            }
+          ].map((feature, index) => (
+            <div 
+              key={index}
+              className={`group p-8 rounded-2xl bg-white/70 dark:bg-gray-800/50 backdrop-blur-sm border border-${feature.color}-100 dark:border-${feature.color}-900/30 hover:shadow-lg transition-all duration-500 hover:-translate-y-2 flex flex-col items-center text-center transform`}
+              style={{ transitionDelay: `${index * 100}ms` }}
+            >
+              <div className={`w-16 h-16 rounded-2xl bg-${feature.color}-100 dark:bg-${feature.color}-900/30 flex items-center justify-center mb-6 group-hover:bg-${feature.color}-600 dark:group-hover:bg-${feature.color}-500 transition-colors duration-300`}>
+                {feature.icon}
+              </div>
+              <h3 className="text-xl font-semibold text-gray-900 dark:text-white mb-3">{feature.title}</h3>
+              <p className="text-gray-600 dark:text-gray-300">{feature.description}</p>
+            </div>
+          ))}
         </div>
       </div>
       </div>

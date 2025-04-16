@@ -1,55 +1,60 @@
 import Header from './Header';
 import { Outlet } from 'react-router-dom';
 import { useEffect, useState } from 'react';
+import Footer from './Footer';
+
+const STORAGE_KEY = 'darkMode';
+
+const setCookie = (name: string, value: string, days = 365) => {
+  const expires = new Date(Date.now() + days * 864e5).toUTCString();
+  document.cookie = `${name}=${value}; expires=${expires}; path=/`;
+};
+
+const getCookie = (name: string) => {
+  return document.cookie
+    .split('; ')
+    .find(row => row.startsWith(name + '='))
+    ?.split('=')[1];
+};
 
 export default function Layout() {
   const [darkMode, setDarkMode] = useState(false);
 
+  // Read cookie on mount
   useEffect(() => {
-    // Check if user has dark mode preference in localStorage
-    const isDarkMode = localStorage.getItem('darkMode') === 'true';
-    setDarkMode(isDarkMode);
+    const savedPreference = getCookie(STORAGE_KEY);
 
-    // Listen for changes in dark mode preference
-    const handleDarkModeChange = (e: any) => {
-      setDarkMode(e.matches);
-      localStorage.setItem('darkMode', e.matches);
-    };
-
-    // Check if browser supports prefers-color-scheme
-    const mediaQuery = window.matchMedia('(prefers-color-scheme: dark)');
-    
-    // Set initial state based on system preference if no localStorage value
-    if (localStorage.getItem('darkMode') === null) {
-      setDarkMode(mediaQuery.matches);
-      localStorage.setItem('darkMode', String(mediaQuery.matches));
+    if (savedPreference !== undefined) {
+      setDarkMode(savedPreference === 'true');
+    } else {
+      setDarkMode(false); // default to light
+      setCookie(STORAGE_KEY, 'false');
     }
-    
-    // Add event listener for changes in system preference
-    mediaQuery.addEventListener('change', handleDarkModeChange);
-    
-    // Apply dark mode class to html element
+  }, []);
+
+  // Apply/remove dark mode class on state change
+  useEffect(() => {
     if (darkMode) {
       document.documentElement.classList.add('dark');
     } else {
       document.documentElement.classList.remove('dark');
     }
-    
-    // Cleanup event listener on unmount
-    return () => mediaQuery.removeEventListener('change', handleDarkModeChange);
   }, [darkMode]);
 
+  // Toggle handler
   const toggleDarkMode = () => {
-    setDarkMode(!darkMode);
-    localStorage.setItem('darkMode', String(!darkMode));
+    const newDarkMode = !darkMode;
+    setDarkMode(newDarkMode);
+    setCookie(STORAGE_KEY, String(newDarkMode));
   };
 
   return (
-    <div className="bg-gradient-to-b from-slate-50 to-indigo-50 dark:from-gray-950 dark:to-indigo-950 min-h-screen">
+    <div className="flex flex-col min-h-screen bg-gradient-to-b from-slate-50 to-indigo-50 dark:from-gray-950 dark:to-indigo-950 transition-colors duration-300">
       <Header toggleDarkMode={toggleDarkMode} darkMode={darkMode} />
-      <main className="main-content">
+      <main className="flex-grow container mx-auto px-4 py-8 sm:px-6 lg:px-8">
         <Outlet />
       </main>
+      <Footer darkMode={darkMode} />
     </div>
   );
 }
