@@ -1,0 +1,173 @@
+{
+  "deep-protac": {
+    "name": "Deep Protac",
+    "version": "v1.2.0",
+    "description": "Standard PROTAC prediction model for general protein degradation applications",
+    "details": "The base PROTAC model provides predictions for protein-ligand interactions and optimal linker configurations for a wide range of protein targets.",
+    "color": "bg-gradient-to-br from-purple-600 to-indigo-600",
+    "icon": "⚛️",
+    "features": [
+      "General protein degradation prediction",
+      "Linker optimization",
+      "E3 ligase recruiter suggestion",
+      "Basic ternary complex modeling"
+    ],
+    "docs": [
+      {
+        "title": "API Documentation",
+        "description": "Learn how to integrate this model into your workflow."
+      },
+      {
+        "title": "Example Notebooks",
+        "description": "See real-world use cases and implementation tips."
+      },
+      {
+        "title": "Research Papers",
+        "description": "Scientific publications related to this model"
+      },
+      {
+        "title": "Community Forum",
+        "description": "Discuss applications and get help from other users"
+      }
+    ],
+    "inputType": "single",
+    "outputType": "text"
+  },
+  "diff-protac": {
+    "name": "Diff PROTAC",
+    "version": "v1.1.3",
+    "description": "Specialized for cancer-related protein targets including KRAS and MYC",
+    "details": "The Diff PROTAC model is fine-tuned for cancer-related targets with special emphasis on previously undruggable oncogenes.",
+    "color": "bg-gradient-to-br from-blue-600 to-pink-600",
+    "icon": "🧬",
+    "features": [
+      "Cancer-specific protein binding optimization",
+      "KRAS mutant targeting",
+      "MYC degradation specialization",
+      "Tumor microenvironment considerations"
+    ],
+    "docs": [
+      {
+        "title": "Research Papers",
+        "description": "Scientific publications related to this model"
+      },
+      {
+        "title": "Community Forum",
+        "description": "Discuss applications and get help from other users"
+      }
+    ],
+    "inputType": "single",
+    "outputType": "text"
+  },
+  "protac-neuro": {
+    "name": "Neuro PROTAC",
+    "version": "v0.9.8",
+    "description": "Optimized for neurological targets including tau protein and α-synuclein",
+    "details": "The Neuro PROTAC model focuses on protein targets relevant to neurological disorders, with special consideration for blood-brain barrier penetration.",
+    "color": "bg-gradient-to-br from-blue-600 to-cyan-600",
+    "icon": "🧠",
+    "features": [
+      "Blood-brain barrier penetration optimization",
+      "Tau protein targeting",
+      "α-synuclein aggregation prevention",
+      "Neuronal specificity modeling"
+    ],
+    "docs": [
+      {
+        "title": "API Documentation",
+        "description": "Learn how to integrate this model into your workflow."
+      },
+      {
+        "title": "Neurological Target Guide",
+        "description": "Specialized resources for working with neurological targets."
+      },
+      {
+        "title": "3D Structure Integration",
+        "description": "Learn how to visualize and work with 3D protein structures."
+      }
+    ],
+    "inputType": "multiple",
+    "outputType": "3D",
+    "inputFields": [
+      {
+        "name": "proteinSequence",
+        "label": "Protein Sequence",
+        "placeholder": "Enter protein sequence"
+      },
+      {
+        "name": "ligandSmiles",
+        "label": "Ligand SMILES",
+        "placeholder": "Enter ligand SMILES notation"
+      },
+      {
+        "name": "linkerLength",
+        "label": "Linker Length",
+        "placeholder": "Enter preferred linker length (atoms)"
+      }
+    ]
+  },
+  "protac-advanced": {
+    "name": "Advanced PROTAC Designer",
+    "version": "v2.0.1",
+    "description": "Full-featured PROTAC design platform with custom linker optimization",
+    "details": "The Advanced PROTAC Designer provides comprehensive tools for novel PROTAC creation with exceptional customization options.",
+    "color": "bg-gradient-to-br from-purple-600 to-blue-600",
+    "icon": "🔬",
+    "features": [
+      "Custom linker library generation",
+      "Multiple E3 ligase compatibility",
+      "Advanced pharmacokinetic modeling",
+      "Structure-based design assistance"
+    ],
+    "docs": [
+      {
+        "title": "Live Preview Setup",
+        "description": "Learn how to enable and use live 3D rendering."
+      },
+      {
+        "title": "Custom Output Config",
+        "description": "Set up preferred export formats and endpoints."
+      }
+    ],
+    "inputType": "single",
+    "outputType": "text"
+  },
+  "protac-interactive": {
+    "name": "Interactive PROTAC Studio",
+    "version": "v1.0.0",
+    "description": "A flexible workspace for custom input/output workflows including 3D structure generation",
+    "details": "Interactive PROTAC Studio offers an advanced interface for multi-input experiments, enabling researchers to input sequences, ligands, linker preferences, and choose output formats like 3D models or raw data.",
+    "color": "bg-gradient-to-br from-blue-600 to-cyan-600",
+    "icon": "🧪",
+    "features": [
+      "Multiple text field inputs (e.g., protein sequence, ligand SMILES, linker length)",
+      "Customizable output formats (text summary, JSON, or 3D model file)",
+      "Live 3D structure preview or downloadable model (e.g., PDB format)",
+      "Integrated input validation and structure-based suggestions"
+    ],
+    "inputType": "multiple",
+    "outputType": "3D",
+    "inputFields": [
+      {
+        "name": "proteinSequence",
+        "label": "Protein Sequence",
+        "placeholder": "Enter protein sequence"
+      },
+      {
+        "name": "ligandSmiles",
+        "label": "Ligand SMILES",
+        "placeholder": "Enter ligand SMILES notation"
+      },
+      {
+        "name": "linkerLength",
+        "label": "Linker Length",
+        "placeholder": "Enter preferred linker length (atoms)"
+      },
+      {
+        "name": "e3Ligase",
+        "label": "E3 Ligase",
+        "placeholder": "Enter E3 ligase (e.g., CRBN, VHL)"
+      }
+    ]
+  }
+}

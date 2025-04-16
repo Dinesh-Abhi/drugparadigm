@@ -1,0 +1,28 @@
+{
+  "modalities": [
+    {
+      "id": "protac",
+      "name": "Protac",
+      "description": "Low molecular weight compounds with high cell permeability and oral bioavailability.",
+      "category": "Traditional"
+    },
+    {
+      "id": "adc",
+      "name": "ADC",
+      "description": "Large, complex molecules derived from living organisms, such as antibodies or proteins.",
+      "category": "Protein-Based"
+    },
+    {
+      "id": "macrocycles",
+      "name": "Gene Therapy",
+      "description": "Treats or prevents diseases by modifying genetic material within a patient’s cells.",
+      "category": "Genomic"
+    },
+    {
+      "id": "rsma",
+      "name": "RNA-based Therapies",
+      "description": "Use RNA molecules to silence, replace, or introduce genes for therapeutic purposes.",
+      "category": "Nucleic Acid"
+    }
+  ]
+}
