@@ -1,23 +1,11 @@
-import { useEffect, useState } from 'react';
+import moment from 'moment';
 
 interface FooterProps {
   darkMode: boolean;
 }
 
 const Footer = ({ }: FooterProps) => {
-  const [currentYear, setCurrentYear] = useState(new Date().getFullYear());
-
-  // Update year if it changes during a long session
-  useEffect(() => {
-    const interval = setInterval(() => {
-      const year = new Date().getFullYear();
-      if (year !== currentYear) {
-        setCurrentYear(year);
-      }
-    }, 60 * 60 * 1000); // Check once per hour
-
-    return () => clearInterval(interval);
-  }, [currentYear]);
+  const currentYear = moment().year();
 
   return (
     <footer className="py-6 border-t transition-colors duration-300 bg-gradient-to-r from-indigo-50 to-slate-50 dark:from-indigo-950 dark:to-gray-950 dark:border-gray-800">
@@ -32,13 +20,16 @@ const Footer = ({ }: FooterProps) => {
 
 export default Footer;
 
+
+
+// // Advanced footer with other content in it
 // import { useEffect, useState } from 'react';
 
 // interface FooterProps {
 //   darkMode: boolean;
 // }
 
-// const Footer = ({ darkMode }: FooterProps) => {
+// const Footer = ({  }: FooterProps) => {
 //   const [currentYear, setCurrentYear] = useState(new Date().getFullYear());
   
 //   // Update year if it changes during a long session
