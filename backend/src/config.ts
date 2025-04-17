@@ -97,7 +97,7 @@ const WEBSITE_PORT = process.env.WEBSITE_PORT || 3000;
 const WEBSITE_URL = process.env.APP_WEBSITE_URL || `http://localhost:${WEBSITE_PORT}`;
 
 export const appInfo = {
-  appName: process.env.APP_NAME || 'ST',
+  appName: process.env.APP_NAME || 'Drug Paradigm',
   apiDomain: API_URL,
   websiteDomain: WEBSITE_URL,
   apiBasePath: '/auth',

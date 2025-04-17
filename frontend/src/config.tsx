@@ -93,18 +93,22 @@ export const SuperTokensConfig = {
         }),
         Session.init(),
     ],
-    getRedirectionURL: async (context: any) => {
+   getRedirectionURL: async (context: any) => {
         if (context.action === "SUCCESS" && context.newSessionCreated) {
-            const params = new URLSearchParams(window.location.search);
-            const redirectTo = params.get("redirectTo");
-
-            if (redirectTo && redirectTo.startsWith("/")) {
-                return redirectTo;
+            if (context.redirectToPath !== undefined) {
+                // we are navigating back to where the user was before they authenticated
+                return context.redirectToPath;
             }
-
+            if (context.createdNewUser) {
+                // user signed up
+            } else {
+                // user signed in
+            }
             return "/";
         }
-    }
+        return undefined;
+    },
+
 };
 
 // 🌐 Documentation link and UI components
