@@ -7,7 +7,7 @@
         "scripts": {
             "start:frontend": "cd frontend && npm run start",
             "start:frontend-live-demo-app": "cd frontend && npx serve -s build",
-            "start:backend": "cd backend && npm run start",
+            "start:backend": "cd backend && npm run start:dev",
             "start:backend-live-demo-app": "cd backend && ./startLiveDemoApp.sh",
             "start": "npm-run-all --parallel start:frontend start:backend",
             "start-live-demo-app": "npx npm-run-all --parallel start:frontend-live-demo-app start:backend-live-demo-app"
