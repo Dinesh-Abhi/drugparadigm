@@ -88,6 +88,7 @@ import Session from 'supertokens-node/recipe/session';
 import Dashboard from 'supertokens-node/recipe/dashboard';
 import UserRoles from 'supertokens-node/recipe/userroles';
 import * as dotenv from 'dotenv';
+import EmailVerification from "supertokens-node/recipe/emailverification";
 
 dotenv.config();
 
@@ -124,6 +125,9 @@ export const recipeList = [
         },
       ],
     },
+  }),
+  EmailVerification.init({
+    mode: "REQUIRED", // or "OPTIONAL"
   }),
   Session.init(),
   Dashboard.init(),

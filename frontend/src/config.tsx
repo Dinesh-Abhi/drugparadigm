@@ -37,16 +37,16 @@
 //         if (context.action === "SUCCESS" && context.newSessionCreated) {
 //             const params = new URLSearchParams(window.location.search);
 //             const redirectTo = params.get("redirectTo");
-    
+
 //             if (redirectTo && redirectTo.startsWith("/")) {
 //                 return redirectTo;
 //             }
-    
+
 //             return "/";
 //         }
 //     }
-    
-    
+
+
 // };
 
 // export const recipeDetails = {
@@ -64,6 +64,8 @@ import { ThirdPartyPreBuiltUI } from "supertokens-auth-react/recipe/thirdparty/p
 import EmailPassword from "supertokens-auth-react/recipe/emailpassword";
 import { EmailPasswordPreBuiltUI } from "supertokens-auth-react/recipe/emailpassword/prebuiltui";
 import Session from "supertokens-auth-react/recipe/session";
+import EmailVerification from "supertokens-auth-react/recipe/emailverification";
+import { EmailVerificationPreBuiltUI } from "supertokens-auth-react/recipe/emailverification/prebuiltui";
 
 export function getApiDomain() {
     const apiPort = import.meta.env.VITE_APP_API_PORT || 3001;
@@ -77,10 +79,10 @@ export function getWebsiteDomain() {
     return websiteUrl;
 }
 
-// 🔐 Main SuperTokens configuration
+// Main SuperTokens configuration
 export const SuperTokensConfig = {
     appInfo: {
-        appName: "Drug Paradigm", // Pulled from env if you want: import.meta.env.VITE_APP_NAME
+        appName: "Drug Paradigm", 
         apiDomain: getApiDomain(),
         websiteDomain: getWebsiteDomain(),
     },
@@ -91,9 +93,12 @@ export const SuperTokensConfig = {
                 providers: [Google.init()],
             },
         }),
+        EmailVerification.init({
+            mode: "REQUIRED", // or "OPTIONAL"
+          }),
         Session.init(),
     ],
-   getRedirectionURL: async (context: any) => {
+    getRedirectionURL: async (context: any) => {
         if (context.action === "SUCCESS" && context.newSessionCreated) {
             if (context.redirectToPath !== undefined) {
                 // we are navigating back to where the user was before they authenticated
@@ -116,7 +121,7 @@ export const recipeDetails = {
     docsLink: "https://supertokens.com/docs/thirdpartyemailpassword/introduction",
 };
 
-export const PreBuiltUIList = [ThirdPartyPreBuiltUI, EmailPasswordPreBuiltUI];
+export const PreBuiltUIList = [ThirdPartyPreBuiltUI, EmailPasswordPreBuiltUI, EmailVerificationPreBuiltUI] ;
 
 export const ComponentWrapper = (props: { children: JSX.Element }): JSX.Element => {
     return props.children;
