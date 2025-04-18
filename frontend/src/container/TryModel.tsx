@@ -25,9 +25,6 @@ interface ModelData {
     }[];
 }
 
-interface ModelsListType {
-    [key: string]: ModelData;
-}
 
 interface InputValue {
     id: string;
@@ -54,8 +51,8 @@ export default function ModelDetail() {
     useEffect(() => {
         setIsModelLoading(true);
         setTimeout(() => {
-            if (modelId && modelsList[modelId as keyof ModelsListType]) {
-                const model = modelsList[modelId as keyof ModelsListType];
+            if (modelId && modelId in modelsList) {
+                const model = modelsList[modelId as keyof typeof modelsList] as ModelData;
                 setModelData(model);
                 
                 // Initialize with a single input field for multiple input models
@@ -254,7 +251,7 @@ export default function ModelDetail() {
                 </div>
 
                 {/* Conditionally Render Documentation Section */}
-                {modelData && modelData?.docs?.length > 0 && (
+                {modelData?.docs && modelData.docs.length > 0 && (
                     <div className="bg-white dark:bg-gray-800 rounded-2xl shadow-xl overflow-hidden flex-1">
                         <div className="border-b border-gray-100 dark:border-gray-700 p-6">
                             <div className="flex items-center gap-3">
@@ -379,7 +376,7 @@ export default function ModelDetail() {
                                             </div>
                                             
                                             {/* If we have multiple field options, show a dropdown to select field type */}
-                                            {modelData?.inputFields?.length > 1 && (
+                                            {modelData?.inputFields && modelData?.inputFields?.length > 1 && (
                                                 <div className="mb-2">
                                                     <select 
                                                         value={inputField.fieldName} 
