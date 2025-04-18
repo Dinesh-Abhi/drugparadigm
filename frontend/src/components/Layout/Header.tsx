@@ -3,8 +3,12 @@ import { Link, useNavigate } from 'react-router-dom';
 import { getUserId, doesSessionExist, signOut } from 'supertokens-auth-react/recipe/session';
 import { Sun, Moon, User, LogOut, ChevronDown } from 'lucide-react';
 
-export default function Header() {
-  const [isDark, setIsDark] = useState(false);
+interface HeaderProps {
+  toggleDarkMode: () => void;
+  darkMode: boolean;
+}
+
+export default function Header({ toggleDarkMode, darkMode }: HeaderProps) {
   const [userId, setUserId] = useState<string | null>(null);
   const [showUserMenu, setShowUserMenu] = useState(false);
   const navigate = useNavigate();
@@ -28,14 +32,14 @@ export default function Header() {
 
   useEffect(() => {
     // Toggle dark mode class
-    if (isDark) {
+    if (darkMode) {
       document.documentElement.classList.add('dark');
     } else {
       document.documentElement.classList.remove('dark');
     }
     // Save preference
-    localStorage.setItem('theme', isDark ? 'dark' : 'light');
-  }, [isDark]);
+    localStorage.setItem('theme', darkMode ? 'dark' : 'light');
+  }, [darkMode]);
 
   const handleLogout = async () => {
     await signOut();
@@ -80,11 +84,11 @@ export default function Header() {
       <div className="flex items-center gap-5">
         {/* Dark Mode Toggle */}
         <button
-          onClick={() => setIsDark(!isDark)}
+          onClick={toggleDarkMode}
           className="p-2 rounded-full bg-white/10 hover:bg-white/20 transition-all duration-300 hover:shadow-lg hover:scale-105"
           aria-label="Toggle dark mode"
         >
-          {isDark ? (
+          {darkMode ? (
             <Moon className="w-5 h-5 text-yellow-300" />
           ) : (
             <Sun className="w-5 h-5 text-yellow-300" />
